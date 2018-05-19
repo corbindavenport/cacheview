@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>CacheView</title>
+	<meta name="description" content="Find cached web pages from Google web cache, the Wayback Machine, and Google AMP.">
+	<meta name="viewport" content="width=400, initial-scale=1">
+	<meta name="keywords" content="cache view, cacheview, cache viewer">
+	<meta name="language" content="English">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<link href="favicon.ico" rel="icon" type="image/x-icon">
+	<meta name="theme-color" content="#FAFAFA">
+	<meta name="robots" content="noindex">
+	<!--[if lt IE 9]>
+	<script>
+	document.createElement('nav');
+	</script>
+	<style>
+	nav {font-weight: normal;}
+	</style>
+	<script src="js/respond.js"></script>
+	<![endif]-->
+	<!--[if lt IE 8]>
+	<style>
+	nav label {display: none}
+	body {overflow-y: auto}
+	nav ul li a, nav .name {border-bottom: 5px solid #FAFAFA;}
+	nav .active {border-bottom: 5px solid #424242 !important;}
+	</style>
+	<![endif]-->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-59452245-4"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-59452245-4');
+	</script>
+</head>
+
+<body>
+
+	<nav role="navigation">
+		<div class="nav-container">
+			<span class="name">
+				Cache View
+			</span>
+			<label for="nav-checkbox">☰</label>
+			<input id="nav-checkbox" type="checkbox">
+			<ul>
+                <li><a href="index.html">Home</a></li>
+				<li><a href="about.html" class="active">About</a></li>
+			</ul>
+		</div>
+	</nav>
+
+    <div class="content">
+		<h1>About</h1>
+		<p>CacheView is a simple web app that finds cached versions of a specific web page. It can find the latest available copy from Google's web cache, the Wayback Machine, and Google's Accelerated Mobile Pages (AMP) cache.</p>
+		<h2>Credits</h2>
+		<p>CacheView was developed by <a href="https://corbin.io/" target="_blank">Corbin Davenport</a>, and is open-source <a href="https://github.com/corbindavenport/cacheview" target="_blank">on GitHub</a>.
+		</p>
+		<p><a href="https://github.com/Rob--W/cors-anywhere" target="_blank">jQuery</a> and <a href="https://github.com/Rob--W/cors-anywhere" target="_blank">CORS Anywhere</a> are used for AMP support.</p>
+    </div>
+    
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/cache.js"></script>
+
+</body>
+
+</html>

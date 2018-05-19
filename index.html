@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>CacheView</title>
+	<meta name="description" content="Find cached web pages from Google web cache, the Wayback Machine, and Google AMP.">
+	<meta name="viewport" content="width=400, initial-scale=1">
+	<meta name="keywords" content="cache view, cacheview, cache viewer">
+	<meta name="language" content="English">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<link href="favicon.ico" rel="icon" type="image/x-icon">
+	<meta name="theme-color" content="#FAFAFA">
+	<!--[if lt IE 9]>
+	<script>
+	document.createElement('nav');
+	</script>
+	<style>
+	nav {font-weight: normal;}
+	</style>
+	<script src="js/respond.js"></script>
+	<![endif]-->
+	<!--[if lt IE 8]>
+	<style>
+	nav label {display: none}
+	body {overflow-y: auto}
+	nav ul li a, nav .name a {border-bottom: 5px solid #FAFAFA;}
+	nav .active {border-bottom: 5px solid #424242 !important;}
+	</style>
+	<![endif]-->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-59452245-4"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+
+	gtag('config', 'UA-59452245-4');
+	</script>
+</head>
+
+<body>
+
+	<nav role="navigation">
+		<div class="nav-container">
+			<span class="name">
+				Cache View
+			</span>
+			<label for="nav-checkbox">☰</label>
+			<input id="nav-checkbox" type="checkbox">
+			<ul>
+                <li><a href="index.html" class="active">Home</a></li>
+				<li><a href="about.html">About</a></li>
+			</ul>
+		</div>
+	</nav>
+
+    <div class="cachebox">
+        <input type="text" name="address" id="address" placeholder="Enter URL here" autofocus="autofocus">
+        <div class="button-row">
+            <button id="google-cache">Google Cache</button>
+            <button id="google-amp">Google AMP</button>
+            <button id="archive-org">Archive.org</button>
+        </div>
+    </div>
+    
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/cache.js"></script>
+
+</body>
+
+</html>

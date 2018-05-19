@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css?family=Arimo|Didact+Gothic');
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #FAFAFA;
+	color: #424242;
+	font-family: 'Arimo', sans-serif;
+	font-size: 24px;
+	line-height: 30px;
+	overflow-y: scroll;
+}
+
+a {
+	color: #03A9F4;
+	text-decoration: none;
+	transition: 0.3s;
+}
+
+a:hover {
+	color: #01579B;
+	text-decoration: underline;
+}
+
+a, img { /* Fix image and link outlines in Internet Explorer */
+	border: none;
+	outline: none;
+}
+
+/* Nav bar */
+
+nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-color: #FAFAFA;
+	font-size: 20px;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-family: 'Didact Gothic', sans-serif;
+	z-index: 10;
+}
+
+nav .nav-container {
+	max-width: 900px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0;
+	margin-bottom: 0;
+	overflow: none;
+}
+
+nav .name {
+	float: left;
+}
+
+nav ul {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	float: right;
+}
+
+nav ul li {
+	display: inline;
+	list-style-type: none;
+	margin-left: 20px;
+}
+
+nav ul li:first-child {
+	margin-left: 0;
+}
+
+nav .active {
+	border-bottom: 5px solid #424242;
+}
+
+nav ul li a, nav .name {
+	display: inline-block;
+	color: #424242;
+	height: 40px;
+	line-height: 40px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+nav ul li a:hover, nav .name a:hover {
+	color: #01579B;
+	border-bottom: 5px solid #03A9F4;
+	text-decoration: none;
+}
+
+/* Content */
+
+@keyframes fadein {
+	from {
+		margin-top: 140px;
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadein-cachebox {
+	from {
+		padding-top: 40px;
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.content {
+	max-width: 900px;
+	max-height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 100px;
+	animation: fadein 0.5s;
+	z-index: 1;
+}
+
+.cachebox {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	width: calc(100%-20px);
+	max-width: 900px;
+	height: 130px;
+	animation: fadein-cachebox 0.5s;
+}
+
+.content p {
+	text-align: justify;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Didact Gothic', sans-serif;
+}
+
+h1 {
+	font-size: 80px;
+	line-height: 80px;
+}
+
+h2 {
+	margin-top: 50px;
+}
+
+/* Mobile styles */
+
+@media screen and (max-width: 1000px) {
+
+	nav .nav-container {
+		padding-left: 20px;
+		padding-right: 20px;
+		max-width: 900px;
+	}
+
+	.content, .cachebox {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+}
+
+@media screen and (max-width: 750px) {
+
+	@keyframes fadein {
+		from {
+			margin-top: 120px;
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
+	.content, .cachebox {
+		font-size: 22px;
+	}
+
+	h1 {
+		font-size: 50px;
+		line-height: 50px;
+	}
+
+}
+
+@media screen and (max-width: 450px) {
+	h1 {
+		font-size: 35px;
+		line-height: 35px;
+	}
+}
+
+/* Side navigation */
+
+label[for='nav-checkbox'] { /* Menu button */
+	float: right;
+	line-height: 40px;
+	padding-left: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+@keyframes menu-animation { /* Pulse blue on mobile tap */
+	0% {
+		color: #424242;
+	}
+	30% {
+		color: #03A9F4;
+	}
+	70% {
+		color: #03A9F4;
+	}
+	100% {
+		color: #424242;
+	}
+}
+
+label[for='nav-checkbox']:hover, label[for='nav-checkbox']:focus {
+	animation: menu-animation 1s;
+}
+
+#nav-checkbox {
+	display: none;
+}
+
+@media screen and (max-width: 750px) {
+
+	@keyframes nav-in { /* Animation for sliding menu */
+		from {
+			margin-left: 100%;
+		}
+		to {
+			margin-left: 0;
+		}
+	}
+
+	nav ul { /* Menu */
+		display: none;
+		position: fixed;
+		width: 100%;
+		right: 0;
+		bottom: 0;
+		top: 0;
+		left: 0;
+		overflow: auto;
+		background-color: #FAFAFA;
+		margin-top: 80px;
+		z-index: 10;
+	}
+
+	nav ul li { /* Menu items */
+		display: block;
+		text-align: center;
+		margin-left: 0;
+	}
+
+	#nav-checkbox:checked + ul { /* Show menu when checkbox is checked */
+		display: block;
+		animation: nav-in 0.5s;
+	}
+
+}
+
+@media screen and (min-width: 751px) {
+
+	label[for='nav-checkbox'] { /* Hide menu button on large screens */
+		display: none;
+	}
+
+}
+
+/* Form styles */
+
+#address {
+	height: 60px;
+	font-size: 30px;
+	line-height: 60px;
+	border: 2px solid #424242;
+	font-family: 'Arimo', sans-serif;
+	border-radius: 20px;
+	color: #424242;
+	padding-left: 5px;
+	padding-right: 5px;
+	width: calc(100% - 12px);
+	outline: none;
+}
+
+#address:focus {
+	border-color: #03A9F4;
+}
+
+.button-row {
+	margin-top: 20px;
+	width: 100%;
+	display: flex;
+	flex-flow: row nowrap;
+}
+
+.button-row button {
+	margin-left: 5px;
+	margin-right: 5px;
+	flex-grow: 1;
+	height: 40px;
+	border: 2px solid #0000;
+	border-radius: 20px;
+	color: #FFF;
+	background-color: #424242;
+	font-family: 'Arimo', sans-serif;
+	cursor: pointer;
+	outline: none;
+}
+
+.button-row button:hover {
+	border-color: #03A9F4;
+}
+
+.button-row button:active {
+	border-color: #006d9e;
+}
+
+.button-row button:first-child {
+	margin-left: 0;
+}
+
+.button-row button:last-child {
+	margin-right: 0;
+}
