@@ -133,7 +133,7 @@ nav ul li a:hover, nav .name a:hover {
 	bottom: 0;
 	margin: auto;
 	width: 100%;
-	width: calc(100%-20px);
+	width: calc(100% - 40px);
 	max-width: 900px;
 	height: 130px;
 	animation: fadein-cachebox 0.5s;
