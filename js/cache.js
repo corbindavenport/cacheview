@@ -1,3 +1,11 @@
+// startsWith() polyfill
+if (!String.prototype.startsWith) {
+    String.prototype.startsWith = function(searchString, position) {
+        position = position || 0;
+        return this.indexOf(searchString, position) === position;
+    };
+}
+
 // Function from: https://stackoverflow.com/a/23945027
 function extractHostname(url) {
     var hostname;
