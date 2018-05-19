@@ -15,28 +15,45 @@ function extractHostname(url) {
 // Google Cache
 
 document.getElementById("google-cache").onclick = function () {
-    var url = document.getElementById("address").value;
-    window.location = "http://webcache.googleusercontent.com/search?q=cache:" + url;
+    if (document.getElementById("address").value != "") {
+        var url = "http://webcache.googleusercontent.com/search?q=cache:" + document.getElementById("address").value;
+        window.open(url);
+    } else {
+        alert("Enter a web address first!")
+    }
 }
 
 // Google AMP
+
 document.getElementById("google-amp").onclick = function () {
-    $.get("https://cors-anywhere.herokuapp.com/" + document.getElementById("address").value, function(data) {
-        if ($(data).filter('link[rel="amphtml"]').attr("href") != undefined) {
-            var canonical = new URL($(data).filter('link[rel="amphtml"]').attr("href"));
-            // Create AMP link
-            var ampDomain = canonical.hostname.replace(/\./g, "-");
-            var amp = "https://" + ampDomain + ".cdn.ampproject.org/v/" + canonical.hostname + canonical.pathname + "?amp_js_v=a1";
-            window.location = amp;
-        } else {
-            alert("An AMP version of this page is not available.")
-        }
-    });
+    if (document.getElementById("address").value != "") {
+        // Create the window first, because creating it later will trigger a popup block
+        var ampWindow = window.open();
+        ampWindow.document.write("<html><head><title>AMP</title><meta name='viewport' content='width=400, initial-scale=1'></head><body><h1 style='font-family: Arial; text-align: center; margin-top:20%;'>Loading...</h1></body></html>");
+        $.get("https://cors-anywhere.herokuapp.com/" + document.getElementById("address").value, function(data) {
+            if ($(data).filter('link[rel="amphtml"]').attr("href") != undefined) {
+                var canonical = new URL($(data).filter('link[rel="amphtml"]').attr("href"));
+                // Create AMP link
+                var ampDomain = canonical.hostname.replace(/\./g, "-");
+                var amp = "https://" + ampDomain + ".cdn.ampproject.org/v/" + canonical.hostname + canonical.pathname + "?amp_js_v=a1";
+                // Load AMP page in Window
+                ampWindow.location.href = amp;
+            } else {
+                ampWindow.document.querySelector("h1").innerText = "An AMP version of this page is not available."
+            }
+        });
+    } else {
+        alert("Enter a web address first!")
+    }
 }
 
 // Archive.org
 
 document.getElementById("archive-org").onclick = function () {
-    var url = document.getElementById("address").value;
-    window.location = "https://web.archive.org/web/" + url;
+    if (document.getElementById("address").value != "") {
+        var url = "https://web.archive.org/web/" + document.getElementById("address").value;
+        window.open(url);
+    } else {
+        alert("Enter a web address first!")
+    }
 }

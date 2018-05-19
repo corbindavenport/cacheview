@@ -132,6 +132,7 @@ nav ul li a:hover, nav .name a:hover {
 	top: 0;
 	bottom: 0;
 	margin: auto;
+	width: 100%;
 	width: calc(100%-20px);
 	max-width: 900px;
 	height: 130px;
