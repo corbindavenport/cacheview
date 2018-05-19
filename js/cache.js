@@ -32,14 +32,28 @@ document.getElementById("google-amp").onclick = function () {
         ampWindow.document.write("<html><head><title>AMP</title><meta name='viewport' content='width=400, initial-scale=1'></head><body><h1 style='font-family: Arial; text-align: center; margin-top:20%;'>Loading...</h1></body></html>");
         $.get("https://cors-anywhere.herokuapp.com/" + document.getElementById("address").value, function(data) {
             if ($(data).filter('link[rel="amphtml"]').attr("href") != undefined) {
-                var canonical = new URL($(data).filter('link[rel="amphtml"]').attr("href"));
+                var url = $(data).filter('link[rel="amphtml"]').attr("href");
+                // Convert scheme-relative URLs into HTTPS URLs
+                if (url.startsWith("//")) {
+                    url = url.replace("//", "https://");
+                    console.log(url);
+                }
+                try {
+                    var canonical = new URL(url);
+                }
+                catch(err) {
+                    ampWindow.close();
+                    alert("Unable to load AMP URL: " + url);
+                    return;
+                }
                 // Create AMP link
                 var ampDomain = canonical.hostname.replace(/\./g, "-");
                 var amp = "https://" + ampDomain + ".cdn.ampproject.org/v/" + canonical.hostname + canonical.pathname + "?amp_js_v=a1";
                 // Load AMP page in Window
                 ampWindow.location.href = amp;
             } else {
-                ampWindow.document.querySelector("h1").innerText = "An AMP version of this page is not available."
+                ampWindow.close();
+                alert("An AMP version of this page is not available.");
             }
         });
     } else {
